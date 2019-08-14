@@ -1,7 +1,7 @@
 ## What's xcmdparser?
 A very simple tool to parse command line string within it's options.
 
-### *Example*
+### *An example*
 ```python
 from xcmdparser import cmdparse
 parsed = cmdparse('newsubscr <cid:int> <alias>[:<passwd>] [<description>]', 'newsubscr 24 myalias:pass12345 A description of a new subscription item.')
