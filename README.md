@@ -17,7 +17,7 @@ You may refer to a field as <cid:int> to parse it as integer or <cid:float> to p
 
 By default (without any qualifier) a field is str.
 
-### Supported Python versions
+### The supported Python versions
 * 2.7
 * 3.x
 
