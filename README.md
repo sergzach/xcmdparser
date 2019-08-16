@@ -4,7 +4,8 @@ A very simple tool to parse command line string within it's options.
 ### *An example*
 ```python
 from xcmdparser import cmdparse
-parsed = cmdparse('newsubscr <cid:int> <alias>[:<passwd>] [<description>]', 'newsubscr 24 myalias:pass12345 A description of a new subscription item.')
+cmd = 'newsubscr <cid:int> <alias>[:<passwd>] [<description>]'
+parsed = cmdparse(cmd, 'newsubscr 24 myalias:pass12345 A description of a new subscription item.')
 print('Parsed fields: cid={cid}, alias={alias}, passwd={passwd}, description="{description}"'.format(**parsed))
 ```
 <b>The output.</b>

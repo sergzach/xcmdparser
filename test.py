@@ -103,4 +103,14 @@ def test_custom_types():
         assert e.custom_types == ['slug']
     else:
         raise Exception('Wrong format for "slug" is not detected.')
+
+def test_custom_types_priority():
+    """
+    A user (custom) type qualifiers have priorities on build-in type qualifiers.
+    """
+    cmd = 'newsubscr <cid:float> <alias:slug>[:<passwd>] [<description>]'
+    with pytest.raises(CmdParseError):
+        parsed = cmdparse(cmd, 'newsubscr -23.34 new-subscr:12345 a new subscription', {'float': r'\d+', 'slug': r'[a-z\-]+'})
+    parsed = cmdparse(cmd, 'newsubscr 23 new-subscr:12345 a new subscription', {'float': r'\d+', 'slug': r'[a-z\-]+'})
+
         
