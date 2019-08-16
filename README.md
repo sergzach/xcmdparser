@@ -28,8 +28,8 @@ print('Parsed fields: cid={cid}, alias={alias}, passwd={passwd}, description="{d
 
 ### Exceptions
 * `CmdParseError.` It occurs when a format of the command does not correspond to a parsing string.
-* `CmdFormatError.` It occurs when fmt option of cmdparse has a wrong format.
-* `CmdCustomTypeError.` It occurs when one or more custom_types option of cmdparse are wrong. Also the object of thrown exception has `custom_types` field which stores keys of custom type qualifiers which regular expressions are wrong.
+* `CmdFormatError.` It occurs when `fmt` option of `cmdparse()` has a wrong format.
+* `CmdCustomTypeError.` It occurs when one or more custom_types option of `cmdparse()` are wrong. Also the object of thrown exception has `custom_types` field which stores keys of custom type qualifiers which regular expressions are wrong.
 
 ### The supported Python versions
 * 2.7
