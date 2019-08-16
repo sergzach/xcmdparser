@@ -26,7 +26,7 @@ print('Parsed fields: cid={cid}, alias={alias}, passwd={passwd}, description="{d
 ```
 **Note.** User (custom) type qualifiers have a priority on the build-in `int` and `float` type qualifiers.
 
-### Exceptions.
+### Exceptions
 * CmdParseError. It occurs when a format of the command does not correspond to a parsing string.
 * CmdFormatError. It occurs when fmt option of cmdparse has a wrong format.
 * CmdCustomTypeError. It occurs when one or more custom_types option of cmdparse are wrong. Also the object of thrown exception has `custom_types` field which stores keys of custom type qualifiers which regular expressions are wrong.
