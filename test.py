@@ -1,5 +1,5 @@
 import pytest
-from xcmdparser import cmdparse, CmdParseError, CmdFormatError
+from xcmdparser import cmdparse, CmdParseError, CmdFormatError, CmdCustomTypeError
 
 
 @pytest.fixture
@@ -84,3 +84,23 @@ def test_raises():
 def test_format_error():
     with pytest.raises(CmdFormatError):
         parsed = cmdparse('client <cid:str>', 'client john')
+
+
+def test_custom_types():
+    cmd = 'newsubscr <cid:float> <alias:slug>[:<passwd>] [<description>]'
+    parsed = cmdparse(cmd, 'newsubscr -23.34 new-subscr:12345 a new subscription', {'slug': r'[a-z\-]+'})
+    assert parsed['cid'] == -23.34
+    assert parsed['alias'] == 'new-subscr'
+    assert parsed['passwd'] == '12345'
+    assert parsed['description'] == 'a new subscription'
+    with pytest.raises(CmdParseError):
+        parsed = cmdparse(cmd, 'newsubscr 24.0 new_subscr:12345 a new subscription', {'slug': r'[a-z\-]+'})
+    with pytest.raises(CmdFormatError):
+        parsed = cmdparse(cmd, 'newsubscr 24.0 new_subscr:12345 a new subscription')
+    try:
+        parsed = cmdparse(cmd, 'newsubscr 24.0 new_subscr:12345 a new subscription', {'slug': r'[+'})
+    except CmdCustomTypeError as e:
+        assert e.custom_types == ['slug']
+    else:
+        raise Exception('Wrong format for "slug" is not detected.')
+        

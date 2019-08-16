@@ -17,6 +17,15 @@ You may refer to a field as <cid:int> to parse it as integer or <cid:float> to p
 
 By default (without any qualifier) a field is str.
 
+### *Custom type qualifiers (with regular expressions)*
+```python
+from xcmdparser import cmdparse
+cmd = 'newsubscr <cid:float> <alias:slug>[:<passwd>] [<description>]'
+parsed = cmdparse(cmd, 'newsubscr 24.0 new_subscr:12345 a new subscription', {'slug': r'[a-z\-]+'})
+print('Parsed fields: cid={cid}, alias={alias}, passwd={passwd}, description="{description}"'.format(**parsed))
+```
+**Note.** User (custom) type qualifiers have a priority on the build-in `int` and `float` type qualifiers.
+
 ### The supported Python versions
 * 2.7
 * 3.x
