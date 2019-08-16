@@ -13,7 +13,7 @@ Parsed fields: cid=24, alias=myalias, passwd=pass12345, description="A descripti
 ```
 
 ### The supported type qualifiers
-You may refer to a field as <cid:int> to parse it as integer or <cid:float> to parse it as float. Other qualifiers are not supported. Negative values are supported.
+You may refer to a field as <cid:int> to parse it as integer or <cid:float> to parse it as float. Negative values are supported.
 
 By default (without any qualifier) a field is str.
 
