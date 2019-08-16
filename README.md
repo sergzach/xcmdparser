@@ -24,7 +24,7 @@ cmd = 'newsubscr <cid:float> <alias:slug>[:<passwd>] [<description>]'
 parsed = cmdparse(cmd, 'newsubscr 24.0 new_subscr:12345 a new subscription', {'slug': r'[a-z\-]+'})
 print('Parsed fields: cid={cid}, alias={alias}, passwd={passwd}, description="{description}"'.format(**parsed))
 ```
-**Note.** User (custom) type qualifiers have a priority on the build-in `int` and `float` type qualifiers.
+**Note.** User (custom) type qualifiers have a priority on the build-in `int` and `float` type qualifiers. E.g. you may, for instance, to make your own custom `float` type qualifier.
 
 ### Exceptions
 * `CmdParseError.` It occurs when a format of the command does not correspond to a parsing string.
